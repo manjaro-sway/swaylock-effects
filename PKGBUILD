@@ -1,31 +1,30 @@
-# Maintainer: Martin Dørum <martid0311@gmail.com>
-_gitname=swaylock-effects
-pkgname="$_gitname-git"
-pkgver=r241.b3a375a
+# Maintainer: Jonas Strassel <info@jonas-strassel.de>
+# Maintainer: Simon Büeler <simon.bueeler at icloud dot com>
+
+pkgname="swaylock-effects"
+_minor=1.6
+_patch=3
+_sourcever=$_minor-$_patch
+pkgver=r95.acf3319
 pkgrel=1
 pkgdesc="A fancier screen locker for Wayland."
 arch=('i686' 'x86_64')
-url="https://github.com/mortie/$_gitname"
+url="https://github.com/mortie/$pkgname"
 license=('MIT')
 depends=('libxkbcommon' 'cairo' 'gdk-pixbuf2' 'pam')
 makedepends=('git' 'meson' 'ninja' 'scdoc')
 provides=('swaylock' 'swaylock-effects')
 conflicts=('swaylock')
-source=("git+https://github.com/mortie/$_gitname.git")
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/$_gitname"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+source=("$pkgname.tar.gz::$url/archive/v$_sourcever.tar.gz")
+md5sums=('46b454bebe633abc9627a916a1c12544')
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname-$_sourcever"
 	meson build --prefix=/usr
 	ninja -C build
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname-$_sourcever"
 	DESTDIR="$pkgdir" ninja -C build install
 }
