@@ -1,9 +1,9 @@
 # Maintainer: itsme <mymail@ishere.ru>
 
 pkgname=swaylock-effects
-pkgver=1.6.4
+pkgver=1.6.10
 _pkgver=1.6-4
-pkgrel=1
+pkgrel=3
 pkgdesc="A fancier screen locker for Wayland."
 arch=('i686' 'x86_64')
 url="https://github.com/mortie/$pkgname"
