@@ -1,27 +1,25 @@
 # Maintainer: itsme <mymail@ishere.ru>
 
 pkgname=swaylock-effects
-pkgver=1.6.10
-_pkgver=cd07dd1082a2fc1093f1e6f2541811e446f4d114
-pkgrel=4
+pkgver=1.7.0.0
+pkgrel=2
 pkgdesc="A fancier screen locker for Wayland."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/jirutka/$pkgname"
 license=('MIT')
 depends=('libxkbcommon' 'cairo' 'gdk-pixbuf2' 'pam')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland' 'wayland-protocols')
-provides=('swaylock' 'swaylock-effects')
-conflicts=('swaylock' 'swaylock-effects-git')
-source=("https://github.com/jirutka/$pkgname/archive/$_pkgver.tar.gz")
-sha256sums=('1f684924483843b2081f1d7e0e12b3080f777c088f660ca3520b7cc4921c2b31')
+provides=('swaylock')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('e94d79e189602694bedfbafb553ce3c6c976426e16f76d93bf7e226dc2876eb6')
 
 build() {
-	cd "$pkgname-$_pkgver"
+	cd "$pkgname-$pkgver"
 	meson build --prefix=/usr
 	ninja -C build
 }
 
 package() {
-	cd "$pkgname-$_pkgver"
+	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir" ninja -C build install
 }
