@@ -1,7 +1,7 @@
 pkgbase = swaylock-effects
 	pkgdesc = A fancier screen locker for Wayland.
 	pkgver = 1.8.1
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/hboetes/swaylock-effects
 	arch = i686
 	arch = x86_64
